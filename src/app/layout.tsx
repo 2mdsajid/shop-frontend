@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextAuthProvider } from "@/lib/auth/SessionProvider";
-import Header from "@/components/app/Header";
+import Header from "@/components/app/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
       <NextAuthProvider>
         <Header />
         <body className={inter.className}>
-          <main className="bg-black text-white absolute top-14">
+          <main className="bg-primary text-black absolute top-14">
             {children}
           </main>
         </body>

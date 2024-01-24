@@ -1,7 +1,7 @@
 import { NAVBAR_LINKS } from '@/lib/data'
 import Link from 'next/link'
 import HeaderSidebar from './HeaderSidebar'
-import { Button } from '../ui/button'
+import { Button } from '../../ui/button'
 
 type Props = {}
 
