@@ -6,6 +6,10 @@ export type TBasicBagInfo = {
     price: number;
     image: string;
     category: string;
+    isFreeDelivery?: boolean;
+    itemsLeft?: number;
+    brand?: string;
+    images?: string[];
     isNew?: boolean;
     hasDiscount?: {
         state: boolean;

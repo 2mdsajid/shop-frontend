@@ -11,9 +11,11 @@ export const DUMMY_BAGS_DATA: TBasicBagInfo[] = [
     {
         id: '1',
         name: 'Elegant Handbag',
+        brand: 'louis-vu',
         category: 'handbag',
         price: 100,
         image: '/bags/1.png',
+        images: ['/bags/1.png', '/bags/2.png', '/bags/3.png', '/bags/5.png', '/bags/6.png'],
         isNew: true,
         hasDiscount: {
             state: true,
@@ -27,10 +29,12 @@ export const DUMMY_BAGS_DATA: TBasicBagInfo[] = [
         isNew: true,
         price: 80,
         image: '/bags/2.png',
+        images: ['/bags/1.png', '/bags/2.png', '/bags/3.png', '/bags/5.png', '/bags/6.png'],
     },
     {
         id: '3',
         name: 'Classic Leat Satchel',
+        brand: 'muskuns',
         category: 'classic',
         price: 120,
         image: '/bags/4.png',
@@ -41,6 +45,7 @@ export const DUMMY_BAGS_DATA: TBasicBagInfo[] = [
         category: 'backpack',
         price: 150,
         image: '/bags/5.png',
+        images: ['/bags/1.png', '/bags/2.png', '/bags/3.png', '/bags/5.png', '/bags/6.png'],
         isNew: false,
         hasDiscount: {
             state: false,
@@ -51,6 +56,7 @@ export const DUMMY_BAGS_DATA: TBasicBagInfo[] = [
         id: '5',
         name: 'Chic Crossbody Bag',
         category: 'children',
+        brand: 'louis vu',
         isNew: true,
         price: 90,
         image: '/bags/6.png',
@@ -86,6 +92,7 @@ export const DUMMY_BAGS_DATA: TBasicBagInfo[] = [
         id: '10',
         name: 'Fashionable Briefcase',
         category: 'duffel',
+        brand: 'mintral',
         price: 180,
         image: '/bags/10.png',
         isNew: true,

@@ -1,6 +1,6 @@
 import { DUMMY_BAGS_DATA } from '@/lib/data'
 import { TBasicBagInfo } from '@/lib/global-types'
-import SectionBagsDisplay from '../../reusable/SectionBagsDisplay'
+import SectionBagsDisplay from './SectionBagsDisplay'
 import SectionTitle from '../../reusable/SectionTitle'
 
 type Props = {}

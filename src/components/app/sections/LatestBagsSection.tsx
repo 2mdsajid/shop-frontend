@@ -2,7 +2,7 @@ import { DUMMY_BAGS_DATA } from '@/lib/data'
 import React from 'react'
 import BasicBagInfoCard from '../../reusable/BasicBagInfoCard'
 import SectionTitle from '../../reusable/SectionTitle'
-import SectionBagsDisplay from '../../reusable/SectionBagsDisplay'
+import SectionBagsDisplay from './SectionBagsDisplay'
 
 type Props = {}
 
