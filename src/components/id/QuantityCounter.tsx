@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
-import { addToCart } from '@/lib/actions'
+import { addToCart, getSingleCartItem } from '@/lib/actions'
 
 type Props = {
     productId: string
@@ -12,26 +12,29 @@ type Props = {
 
 const QuantityCounter = (props: Props) => {
     const { itemsLeft, productId } = props
-    const [quantity, setQuantity] = useState(0)
+
+    const quantityInLocalStorage = getSingleCartItem(productId)
+    const [quantity, setQuantity] = useState(quantityInLocalStorage)
+
     const changeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.currentTarget.value;
-    
+
         if (!val.trim()) {
             setQuantity(0);
             return;
         }
-    
+
         const num = parseInt(val, 10);
-    
+
         if (isNaN(num) || num < 1) {
             setQuantity(0);
             return;
         }
-        if ( (itemsLeft && num > itemsLeft)) {
+        if ((itemsLeft && num > itemsLeft)) {
             setQuantity(itemsLeft);
             return;
         }
-    
+
         setQuantity(num);
     };
 
@@ -58,7 +61,7 @@ const QuantityCounter = (props: Props) => {
             </div>
             <div className="flex space-x-4">
                 <Button className="bg-blue-500 text-white py-2 px-6">Buy Now</Button>
-                <Button className="bg-orange-500 text-white py-2 px-6" onClick={() => addToCart(productId)}>Add to Cart</Button>
+                <Button className="bg-orange-500 text-white py-2 px-6" onClick={() => addToCart(productId, quantity)}>Add to Cart</Button>
             </div>
         </div>
     )

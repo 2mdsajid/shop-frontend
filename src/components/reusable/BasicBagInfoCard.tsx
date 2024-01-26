@@ -37,7 +37,7 @@ const BasicBagInfoCard = (props: TBasicBagInfo) => {
                         <div className='flex flex-wrap gap-2 my-2'>
                             <Button onClick={(e) => {
                                 e.preventDefault();
-                                addToCart(id);
+                                addToCart(id, 1);
                             }}>
                                 <TiShoppingCart />
                             </Button>
