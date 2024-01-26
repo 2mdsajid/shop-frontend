@@ -16,3 +16,13 @@ export type TBasicBagInfo = {
         value: number | 0;
     }
 }
+
+export type TItemForCheckout = {
+    id: string
+    quantity: number
+}
+
+export type TCartItemInLocalstorage = {
+    details: TBasicBagInfo
+    quantity: number
+}

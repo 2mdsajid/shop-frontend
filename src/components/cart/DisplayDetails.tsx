@@ -1,6 +1,3 @@
-import React from 'react'
-import { Button } from '../ui/button'
-import { Checkbox } from '../ui/checkbox'
 
 type Props = {
     id: string

@@ -15,6 +15,8 @@
     "clsx": "^2.1.0",
     "embla-carousel-autoplay": "^8.0.0-rc19",
     "embla-carousel-react": "^8.0.0-rc19",
+    "jose": "^5.2.0",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.312.0",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
@@ -25,6 +27,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

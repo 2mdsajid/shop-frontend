@@ -26,16 +26,12 @@ const DisplayOrderSummary = (props: Props) => {
                 <span>Shipping Fee Discount</span>
                 <span className="text-red-600">-Rs. {additionalDiscount}</span>
             </div>
-            <div className="mt-4">
-                <Input className="mb-2" placeholder="Enter Voucher Code" />
-                <Button className="w-full">APPLY</Button>
-            </div>
             <div className="flex justify-between font-semibold text-lg mt-4">
                 <span>Total</span>
                 <span>Rs. {totalCharge}</span>
             </div>
-            <Button className="w-full mt-4 bg-orange-500 text-white">PROCEED TO CHECKOUT (2)</Button>
-        </div>)
+        </div>
+    )
 }
 
 export default DisplayOrderSummary

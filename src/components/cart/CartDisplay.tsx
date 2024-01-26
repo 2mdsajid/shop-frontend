@@ -1,13 +1,14 @@
 'use client'
 
 import { addToCart, getCartItems, removeFromCart } from "@/lib/actions"
-import { TBasicBagInfo } from "@/lib/global-types"
+import { TBasicBagInfo, TItemForCheckout } from "@/lib/global-types"
 import { useState } from "react"
 import DisplayDetails from "./DisplayDetails"
 import DisplayOrderSummary from "./DisplayOrderSummary"
 import CartQuantityCounter from "./CartQuantityCounter"
 import CartDeleteItem from "./CartDeleteItem"
 import NoCartItemFound from "../reusable/NoCartItemFound"
+import CartProceedToCheckoutButton from "./CartProceedToCheckoutButton"
 
 type TCartItemInLocalstorage = {
     details: TBasicBagInfo
@@ -53,12 +54,10 @@ export default function CartDisplay() {
         if (index !== -1) {
             const currentQuantity = updatedCartItems[index].quantity;
             if (type === 'd') {
-                // Decrement quantity
                 const newQuantity = Math.max(currentQuantity - 1, 1);
                 updatedCartItems[index].quantity = newQuantity;
                 addToCart(id, newQuantity)
             } else if (type === 'i') {
-                // Increment quantity
                 const newQuantity = Math.min(currentQuantity + 1, itemsLeft || currentQuantity + 1);
                 updatedCartItems[index].quantity = newQuantity;
                 addToCart(id, newQuantity)
@@ -89,6 +88,17 @@ export default function CartDisplay() {
         removeFromCart(id)
         setCartItems(updatedCartItems);
     };
+
+    const generateCheckoutItems = () => {
+        let items: TItemForCheckout[] = []
+        cartItems.forEach((item) => {
+            items.push({
+                id: item.details.id,
+                quantity: item.quantity
+            })
+        });
+        return items;
+    }
 
 
 
@@ -127,6 +137,9 @@ export default function CartDisplay() {
                             total={calculateTotal()}
                             additionalDiscount={0}
                             deliveryCharge={120}
+                        />
+                        <CartProceedToCheckoutButton
+                            items={generateCheckoutItems()}
                         />
                     </div>
                 </div>}
