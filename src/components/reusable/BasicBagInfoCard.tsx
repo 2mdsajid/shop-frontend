@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { TiShoppingCart } from "react-icons/ti";
 import { Button } from '../ui/button';
 import { addToCart } from '@/lib/actions';
+import { toast } from '@/components/ui/use-toast';
+
 
 
 const BasicBagInfoCard = (props: TBasicBagInfo) => {
-    const { id, name, price, image, hasDiscount, isNew } = props;
+    const { id, name, price, imageUrl, hasDiscount, isNew } = props;
 
     return (
         <Button
@@ -21,7 +23,7 @@ const BasicBagInfoCard = (props: TBasicBagInfo) => {
                             <span>new</span>
                         </div>
                     )}
-                    <img className="w-full" src={image} alt={name} />
+                    <img className="w-full" src={imageUrl} alt={name} />
                     <div className="text-wrap">
                         <div className="font-bold text-lg mb-2 text-wrap">{name}</div>
                         <p className="text-gray-700 text-base">
@@ -37,11 +39,16 @@ const BasicBagInfoCard = (props: TBasicBagInfo) => {
                         <div className='flex flex-wrap gap-2 my-2'>
                             <Button onClick={(e) => {
                                 e.preventDefault();
-                                addToCart(id, 1);
+                                const { state, message } = addToCart(id, 1);
+                                return toast({
+                                    title: state,
+                                    variant: state,
+                                    description: message
+                                })
                             }}>
                                 <TiShoppingCart />
                             </Button>
-                            <Button asChild><Link href={`/${id}-1`}>view</Link></Button>
+                            <Button asChild><Link href={`/${id}`}>view</Link></Button>
                         </div>
                     </div>
                 </div>

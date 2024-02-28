@@ -1,8 +1,6 @@
 import CheckoutMain from '@/components/checkout/CheckoutMain'
+import NotFound from '@/components/reusable/NotFound'
 import { getCheckoutItems } from '@/lib/actions'
-import { TCartItemInLocalstorage, TItemForCheckout } from '@/lib/global-types'
-import { decodeCheckoutToken } from '@/lib/utils'
-import React from 'react'
 
 type Props = {
     searchParams: {
@@ -12,11 +10,10 @@ type Props = {
 
 const page = async (props: Props) => {
     const { t } = props.searchParams
-    const data = decodeCheckoutToken(t)
-    const items = getCheckoutItems(data)
+    const { data, message } = await getCheckoutItems(t)
     return (
         <div className='w-screen'>
-            <CheckoutMain data={items} />
+            {(data && data.length > 0) ? <CheckoutMain data={data} /> : <NotFound message={message} />}
         </div>
     )
 }

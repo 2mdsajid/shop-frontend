@@ -5,6 +5,7 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { addToCart, getCheckoutToken, getSingleCartItem } from '@/lib/actions'
 import { useRouter } from 'next/navigation'
+import { toast } from '../ui/use-toast'
 
 type Props = {
     productId: string
@@ -56,8 +57,15 @@ const QuantityCounter = (props: Props) => {
             id: productId,
             quantity
         }]
-        const token = await getCheckoutToken(items)
-        router.push(`/checkout?t=${token}`)
+        const { data, message } = await getCheckoutToken(items)
+        if (!data) {
+            return toast({
+                variant: "destructive",
+                title: "warning",
+                description: message,
+            })
+        }
+        router.push(`/checkout?t=${data}`)
     }
 
 

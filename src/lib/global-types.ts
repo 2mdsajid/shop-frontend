@@ -1,10 +1,11 @@
 
+
 // basic type of any bag
 export type TBasicBagInfo = {
     id: string;
     name: string;
     price: number;
-    image: string;
+    imageUrl: string;
     category: string;
     isFreeDelivery?: boolean;
     itemsLeft?: number;
@@ -17,12 +18,52 @@ export type TBasicBagInfo = {
     }
 }
 
+export type TOrderProduct = {
+    name: string
+    imageUrl: string
+    category: string
+    quantity: number
+    price: number
+}
+
+
 export type TItemForCheckout = {
     id: string
     quantity: number
 }
+export type TItemForPlaceOrderToken = {
+    id: string
+    price: number
+    quantity: number
+}
 
-export type TCartItemInLocalstorage = {
+export type TItemConfirmedOrder = {
+    details: TBasicBagInfo
+    price: number
+    quantity: number
+}
+
+export type TOrderInfo = {
+    id: string;
+    createdAt: Date;
+    status: string;
+  }
+
+export type TItemInCartLocalStorage = {
+    id: string
+    quantity: number
+}
+
+export type TItemInCart = {
     details: TBasicBagInfo
     quantity: number
+}
+
+export type TLocationFromIpApi = {
+    ip: string
+    city: string
+    region: string
+    country: string
+    loc: string
+    timezone: string
 }

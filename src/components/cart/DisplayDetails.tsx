@@ -4,7 +4,7 @@ type Props = {
     name: string
     category: string
     price: number
-    image: string
+    imageUrl: string
     hasDiscount?: {
         state: boolean
         value: number
@@ -13,7 +13,7 @@ type Props = {
 }
 
 const DisplayDetails = (props: Props) => {
-    const { id, name, category, price, itemsLeft, hasDiscount, image } = props
+    const { id, name, category, price, itemsLeft, hasDiscount, imageUrl } = props
     return (
         <div className="border-b pb-4">
             <div className="flex gap-4">
@@ -21,7 +21,7 @@ const DisplayDetails = (props: Props) => {
                     alt={name}
                     className="h-20 w-20 flex-none rounded-md bg-gray-200"
                     height="80"
-                    src={image}
+                    src={imageUrl}
                     style={{
                         aspectRatio: "80/80",
                         objectFit: "cover",

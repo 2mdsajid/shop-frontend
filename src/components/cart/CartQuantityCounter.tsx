@@ -16,9 +16,15 @@ const CartQuantityCounter = (props: Props) => {
     const { id, quantity, itemsLeft, setQuantityFunction, setQuantityFunctionForInput } = props
     return (
         <div className="flex items-center space-x-2">
-            <Button className='bg-gray-200 text-gray-800' onClick={() => setQuantityFunction('d', id, itemsLeft)}>-</Button>
+            <Button className='bg-gray-200 text-gray-800'
+                onClick={(e) => {
+                    setQuantityFunction('d', id, itemsLeft)
+                }}>-</Button>
             <Input className="w-12 text-center" type="text" value={quantity} onChange={(e) => setQuantityFunctionForInput(e, id, itemsLeft)} />
-            <Button className='bg-gray-200 text-gray-800' onClick={() => setQuantityFunction('i', id, itemsLeft)}>+</Button>
+            <Button className='bg-gray-200 text-gray-800'
+                onClick={(e) => {
+                    setQuantityFunction('i', id, itemsLeft)
+                }}>+</Button>
         </div>
     )
 }

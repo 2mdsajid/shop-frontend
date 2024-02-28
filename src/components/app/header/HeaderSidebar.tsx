@@ -1,7 +1,7 @@
 'use client'
 import { NAVBAR_LINKS } from '@/lib/data';
 import { useState } from 'react';
-import { Button } from '../../ui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 type Props = {}
@@ -20,7 +20,7 @@ const HeaderSidebar = (props: Props) => {
                     showLinks ? <>X</> : <>T</>
                 }</Button>
             </div>
-            <div className={`${showLinks ? 'w-screen ' : 'w-[0vw]'} dark:bg-dark-primary bg-primary  flex  flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 absolute top-14 left-0  z-100 md:static h-screen sm:h-auto sm:w-auto sm:items-center transition-width ease duration-200`}>
+            <div className={`${showLinks ? 'w-screen ' : 'w-[0vw]'} dark:bg-dark-primary bg-primary  flex  flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3 absolute top-14 left-0  z-100 md:static h-screen md:h-auto md:w-auto md:items-center transition-width ease duration-200`}>
                 {showLinks && (
                     <div className='flex flex-col'>
                         {NAVBAR_LINKS.map((link, index) => (

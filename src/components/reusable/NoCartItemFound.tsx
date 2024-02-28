@@ -4,7 +4,7 @@ type Props = {}
 
 const NoCartItemFound = (props: Props) => {
   return (
-    <div>NoCartItemFound</div>
+    <div className=''>NoCartItemFound</div>
   )
 }
 

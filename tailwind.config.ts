@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      zIndex: {
+        '100': '100',
+        '200': '200',
+        '300': '300',
+      },
       colors: {
         primary: "#fafafa",
         secondary: "#748de2",

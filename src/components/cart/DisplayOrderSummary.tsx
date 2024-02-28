@@ -13,7 +13,8 @@ const DisplayOrderSummary = (props: Props) => {
     const { itemsCount, total, deliveryCharge, additionalDiscount } = props
     const totalCharge = total + deliveryCharge - additionalDiscount
     return (
-        <div className="space-y-2">
+        <div className="space-y-2 w-full bg-gray-50 p-4">
+            <h3 className="font-semibold text-lg mb-4">Order Summary</h3>
             <div className="flex justify-between">
                 <span>Subtotal ({itemsCount} items)</span>
                 <span>Rs. {total}</span>

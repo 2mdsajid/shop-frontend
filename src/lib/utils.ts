@@ -17,9 +17,4 @@ export const generateCheckoutToken = (items: TItemForCheckout[]) => {
   return token
 }
 
-// decode token for checkout
-export const decodeCheckoutToken = (token: string): TItemForCheckout[] => {
-  const secret = process.env.NEXT_PUBLIC_CHECKOUT_JWT_TOKEN as string;
-  const decoded = jwt.verify(token, secret) as any
-  return decoded.items
-};
+

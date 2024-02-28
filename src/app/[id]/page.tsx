@@ -11,10 +11,10 @@ type Props = {
 
 const page = async (props: Props) => {
     const { id } = props.params
-    const singleBagData = await getSingleBagData(id)
+    const { data, message } = await getSingleBagData(id)
     return (
         <div className='w-screen'>
-            {singleBagData ? <SingleProductDisplay {...singleBagData} /> : <NotFound /> }
+            {data ? <SingleProductDisplay {...data} /> : <NotFound message={message} />}
         </div>
     )
 }

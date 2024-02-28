@@ -1,10 +1,12 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  message?: string
+}
 
 const NotFound = (props: Props) => {
   return (
-    <div>NotFound</div>
+    <div>{props.message ? <p>{props.message}</p> : <p>NotFound</p>}</div>
   )
 }
 
