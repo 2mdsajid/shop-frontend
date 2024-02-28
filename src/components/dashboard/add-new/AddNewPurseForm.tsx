@@ -2,13 +2,19 @@
 
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import ImageUploaderComponent from './ImageUploaderComponent';
 import { Textarea } from '@/components/ui/textarea';
+import { TBasicBagInfoForEdit } from '@/lib/global-types';
+import { isValidUUID } from '@/lib/utils';
 
+type Props = {
+  data?: TBasicBagInfoForEdit
+}
 
-const AddNewPurseForm = () => {
+const AddNewPurseForm = (props: Props) => {
 
+  const [productId, setProductId] = useState('')
   const [isNew, setIsNew] = useState(true)
   const [images, setImages] = useState<string[]>([''])
   const [imageUrl, setImageUrl] = useState('someurl')
@@ -67,26 +73,20 @@ const AddNewPurseForm = () => {
         })
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/product/add`, {
+
+      const apiEndPoint = (productId && isValidUUID(productId)) ? `/update/${productId}` : `/add`
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/product${apiEndPoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(productObject),
       })
-      if (!response.ok) {
-        const data = await response.json()
-        return toast({
-          variant: "destructive",
-          title: "warning",
-          description: data.message,
-        })
-      }
-      const data = await response.json()
+      const { state, message } = await response.json()
       return toast({
-        variant: "success",
-        title: "warning",
-        description: data.message,
+        variant: state,
+        title: state,
+        description: message,
       })
 
     } catch (error) {
@@ -97,6 +97,39 @@ const AddNewPurseForm = () => {
       })
     }
   };
+
+  useEffect(() => {
+    if (props?.data) {
+      const {
+        id,
+        name,
+        price,
+        category,
+        itemsLeft,
+        brand,
+        isFreeDelivery,
+        description,
+        imageUrl,
+        images,
+        hasDiscount
+      } = props?.data
+
+      setProductId(id)
+      setName(name)
+      setBrand(brand)
+      setPrice(price)
+      setCategory(category)
+      setItemsLeft(itemsLeft)
+      setIsFreeDelivery(isFreeDelivery)
+      setHasDiscount(hasDiscount.state)
+      setDiscount(hasDiscount.value)
+      setDescription(description)
+      setImageUrl(imageUrl)
+      setImages(images)
+      setIsNew(isNew)
+    }
+
+  }, [])
 
   return (
     <div>

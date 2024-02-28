@@ -1,6 +1,6 @@
 import { toast } from "@/components/ui/use-toast";
 import { DUMMY_BAGS_DATA } from "./data"
-import { TBasicBagInfo, TItemConfirmedOrder, TItemForCheckout, TItemForPlaceOrderToken, TItemInCart, TItemInCartLocalStorage, TLocationFromIpApi, TOrderInfo, TOrderProduct } from "./global-types";
+import { TBasicBagInfo, TBasicBagInfoForEdit, TItemConfirmedOrder, TItemForCheckout, TItemForPlaceOrderToken, TItemInCart, TItemInCartLocalStorage, TLocationFromIpApi, TOrderInfo, TOrderProduct } from "./global-types";
 
 // add item to cart
 export const addToCart = (id: string, quantity: number): {
@@ -160,7 +160,7 @@ export const confirmAndGetPlaceOrderItems = async (token: string, userId: string
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ token,userId })
+            body: JSON.stringify({ token, userId })
         })
         const { data, message } = await response.json()
         return { data, message }
@@ -169,9 +169,25 @@ export const confirmAndGetPlaceOrderItems = async (token: string, userId: string
     }
 };
 
+// Get all the products
+export const getAllProducts = async (): Promise<{
+    data: TBasicBagInfo[] | null,
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.BACKEND}/product/get-all`, {
+            cache: 'no-store'
+        })
+        const { data, message } = await response.json()
+        return { data, message }
+    } catch (error: any) {
+        return { data: null, message: 'Error Fetching The Data!' }
+    }
+}
 
+// single bag data from BE
 export const getSingleBagData = async (id: string): Promise<{
-    data: TBasicBagInfo | null,
+    data: TBasicBagInfoForEdit | null,
     message?: string
 }> => {
     try {
@@ -183,6 +199,23 @@ export const getSingleBagData = async (id: string): Promise<{
         return await response.json()
     } catch (error: any) {
         return { data: null, message: 'Some Error Occured!' }
+    }
+}
+
+// delete a purse/bag from BE
+export const deletePurse = async (id: string): Promise<{
+    state: 'success' | 'destructive',
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/product/delete/${id}`, {
+            method: 'GET',
+            cache: 'no-store'
+        })
+        const { state, message } = await response.json();
+        return { state, message }
+    } catch (error) {
+        return { state: 'destructive', message: 'Some Error Occured!' }
     }
 }
 

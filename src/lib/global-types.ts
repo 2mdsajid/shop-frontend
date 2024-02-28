@@ -7,12 +7,32 @@ export type TBasicBagInfo = {
     price: number;
     imageUrl: string;
     category: string;
+    brand: string;
+    description?: string;
     isFreeDelivery?: boolean;
     itemsLeft?: number;
-    brand?: string;
     images?: string[];
     isNew?: boolean;
     hasDiscount?: {
+        state: boolean;
+        value: number | 0;
+    }
+}
+
+// basic type of any bag
+export type TBasicBagInfoForEdit = {
+    id: string;
+    name: string;
+    price: number;
+    imageUrl: string;
+    category: string;
+    brand: string;
+    description: string;
+    isFreeDelivery: boolean;
+    itemsLeft: number;
+    images: string[];
+    isNew: boolean;
+    hasDiscount: {
         state: boolean;
         value: number | 0;
     }
