@@ -1,6 +1,4 @@
-import { toast } from "@/components/ui/use-toast";
-import { DUMMY_BAGS_DATA } from "./data"
-import { TBasicBagInfo, TBasicBagInfoForEdit, TItemConfirmedOrder, TItemForCheckout, TItemForPlaceOrderToken, TItemInCart, TItemInCartLocalStorage, TLocationFromIpApi, TOrderInfo, TOrderProduct } from "./global-types";
+import { TBasicBagInfo, TBasicBagInfoForEdit, TItemForCheckout, TItemForPlaceOrderToken, TItemInCart, TItemInCartLocalStorage, TLocationFromIpApi, TOrderInfo, TOrderInfoExtended, TOrderProduct, TOrderStatsTable, TOrderStatus } from "./global-types";
 
 // add item to cart
 export const addToCart = (id: string, quantity: number): {
@@ -211,6 +209,64 @@ export const deletePurse = async (id: string): Promise<{
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/product/delete/${id}`, {
             method: 'GET',
             cache: 'no-store'
+        })
+        const { state, message } = await response.json();
+        return { state, message }
+    } catch (error) {
+        return { state: 'destructive', message: 'Some Error Occured!' }
+    }
+}
+
+
+// get orders for dshboard - admin only
+export const getAllOrders = async (): Promise<{
+    data: TOrderStatsTable[] | null,
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/product/get-all-orders`, {
+            method: 'GET',
+            cache: 'no-store'
+        })
+        const { data, message } = await response.json()
+        return { data, message }
+    } catch (error) {
+        return { data: null, message: 'Some Error Occured!' }
+    }
+}
+
+// get a single order
+export const getOrderById = async (id: string): Promise<{
+    data: {
+        products: TOrderProduct[],
+        orderInfo: TOrderInfo
+    } | null,
+    message?: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.BACKEND}/product/get-order/${id}`, {
+            method: 'GET',
+            cache: 'no-store'
+        })
+        const { data, message } = await response.json()
+        return { data, message }
+
+    } catch (error) {
+        return { data: null, message: 'Some Error Occured!' }
+    }
+}
+
+// updating status of an order
+export const updateOrderStatus = async (status: TOrderStatus, orderId: string): Promise<{
+    state: 'success' | 'destructive',
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND}/product/update-order-status/${orderId}`, {
+            method: 'POST',
+            cache: 'no-store',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status })
         })
         const { state, message } = await response.json();
         return { state, message }

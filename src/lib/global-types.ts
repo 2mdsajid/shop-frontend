@@ -38,19 +38,12 @@ export type TBasicBagInfoForEdit = {
     }
 }
 
-export type TOrderProduct = {
-    name: string
-    imageUrl: string
-    category: string
-    quantity: number
-    price: number
-}
-
 
 export type TItemForCheckout = {
     id: string
     quantity: number
 }
+
 export type TItemForPlaceOrderToken = {
     id: string
     price: number
@@ -63,11 +56,38 @@ export type TItemConfirmedOrder = {
     quantity: number
 }
 
+export type TOrderProduct = {
+    name: string
+    imageUrl: string
+    category: string
+    quantity: number
+    price: number
+}
+
+export type TOrderStatus = 'created' | 'delivered' | 'shipping'
+
 export type TOrderInfo = {
     id: string;
     createdAt: Date;
-    status: string;
-  }
+    status: TOrderStatus;
+}
+
+export type TOrderInfoExtended = TOrderInfo & {
+    orderToken: string;
+    User: {
+        name: string;
+        email: string;
+    };
+}
+
+//for table data types
+export type TOrderStatsTable = {
+    id: string
+    createdAt: string
+    status: string
+    userName: string
+    userEmail: string
+}
 
 export type TItemInCartLocalStorage = {
     id: string

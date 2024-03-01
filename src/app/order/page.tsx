@@ -19,7 +19,6 @@ const page = async (props: Props) => {
     const { t } = props.searchParams
 
     const { data, message } = await confirmAndGetPlaceOrderItems(t, userId)
-    console.log("🚀 ~ page ~ data:", data)
     if (!data) return (
         <p>{message}</p>
     )

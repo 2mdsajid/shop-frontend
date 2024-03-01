@@ -12,7 +12,7 @@ const OrderProductsTable = (props: Props) => {
             <h2 className="text-xl font-semibold text-gray-800 mb-3">Order Summary</h2>
             {products.map((p, i) => {
                 return (
-                    <div className="flex justify-between items-center mb-3">
+                    <div key={i} className="flex justify-between items-center mb-3">
                         <div className="flex items-center space-x-4">
                             <img
                                 alt={p.name}
