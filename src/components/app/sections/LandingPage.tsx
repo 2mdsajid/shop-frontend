@@ -1,15 +1,14 @@
 'use client'
 
-import React from 'react'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { Button } from '../../ui/button';
+  CarouselPrevious
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import React from 'react';
 
 const bagData = [
   { name: 'Clean and elegant handbag cherishing', description: 'stay elegant !', imageSrc: '/bags/1.png' },
@@ -20,36 +19,60 @@ const bagData = [
 type Props = {}
 
 const LandingPage = (props: Props) => {
+
+  // const [emblaRef, emblaApi] = useEmblaCarousel()
+  // const logSlidesInView = useCallback((emblaApi: EmblaCarouselType) => {
+  //   console.log(emblaApi.slidesInView())
+  // }, [])
+
+  // const { selectedIndex, scrollSnaps, onDotButtonClick } =
+  // useDotButton(emblaApi)
+
+
   const plugin = React.useRef(
-    Autoplay({ delay: 2000 })
+    Autoplay({
+      delay: 1000,
+      stopOnFocusIn: true,
+      stopOnInteraction: true,
+      stopOnMouseEnter: true,
+    }),
   )
+
+  // useEffect(() => {
+  //   if (emblaApi) emblaApi.on('slidesInView', logSlidesInView)
+  // }, [emblaApi, logSlidesInView])
+
   return (
-    <section className='w-screen py-10 mx-auto px-12 md:px-10 lg:px-20 xl:px-28'>
+    <section className='w-screen pt-5  mx-auto px-4 md:px-10 lg:px-20 xl:px-28'>
       <Carousel
         opts={{
           align: "start",
           loop: true,
         }}
         plugins={[plugin.current]}
-        className="w-[90%] mx-auto"
+        className="w-full mx-auto p-0 flex items-center border relative"
       >
-        <CarouselContent>
+        <CarouselPrevious className='absolute bg-transparent h-full backdrop-blur-0 top-0 rounded-none hover:bg-transparent  hover:border hover:border-r-black border-transparent left-0 z-100' />
+        <CarouselContent className='m-0 mx-auto'>
           {bagData.map((bag, index) => (
-            <CarouselItem key={index}>
-              <div className='w-full bg-primary flex flex-col-reverse md:flex-row gap-2 justify p-4'>
-                <div className='flex flex-col mx-auto'>
-                  <h1 className='text-2xl font-bold'>{bag.name}</h1>
-                  <h3 className='text-sm'>{bag.description}</h3>
-                  <Button className='w-max'>Buy Now</Button>
-                </div>
-                <img className='w-full sm:w-[80%] md:w-1/3 lg:w-1/4 mx-auto' src={bag.imageSrc} alt={bag.name} />
+            <CarouselItem key={index} className='w-[100%]'>
+              <div className='w-full bg-primary  '>
+                <img className='w-full mx-auto' src={'/lp.jpg'} alt={bag.name} />
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselNext className='absolute bg-transparent h-full backdrop-blur-0 top-0 rounded-none hover:bg-transparent hover:border hover:border-l-black border-transparent right-0 z-100' />
       </Carousel>
+      {/* <div className="embla__dots">
+        {bagData.map((_, index) => (
+          <div
+            key={index}
+            onClick={() => onDotButtonClick(index)}
+            className={`cursor-pointer`}
+          >o</div>
+        ))}
+      </div> */}
     </section>
   )
 }

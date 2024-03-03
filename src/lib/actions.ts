@@ -1,5 +1,58 @@
 import { TBasicBagInfo, TBasicBagInfoForEdit, TItemForCheckout, TItemForPlaceOrderToken, TItemInCart, TItemInCartLocalStorage, TLocationFromIpApi, TOrderInfo, TOrderInfoExtended, TOrderProduct, TOrderStatsTable, TOrderStatus } from "./global-types";
 
+
+// get product categories
+export const getProductCategories = async (): Promise<{
+    data: string[] | null,
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.BACKEND}/product/get-categories`, {
+            cache: 'no-store',
+            method: 'GET',
+        })
+        const { data, message } = await response.json();
+        return { data, message };
+    } catch (error: any) {
+        return { data: null, message: error.message }
+    }
+}
+
+// get products by categories
+export const getProductsByCategory = async (category: string): Promise<{
+    data: TBasicBagInfo[] | null,
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.BACKEND}/product/get-products-by-category/${category}`, {
+            cache: 'no-store',
+            method: 'GET',
+        });
+        const { data, message } = await response.json();
+        return { data, message };
+    } catch (error: any) {
+        return { data: null, message: error.message }
+    }
+}
+
+// get latest bags
+export const getLatestBags = async (): Promise<{
+    data: TBasicBagInfo[] | null,
+    message: string
+}> => {
+    try {
+        const response = await fetch(`${process.env.BACKEND}/product/get-latest`, {
+            cache: 'no-store',
+            method: 'GET',
+        })
+        const { data, message } = await response.json()
+        return { data, message }
+    } catch (error) {
+        return { data: null, message: 'Some Error Occured!' }
+    }
+}
+
+
 // add item to cart
 export const addToCart = (id: string, quantity: number): {
     state: 'success' | 'destructive',
@@ -24,7 +77,7 @@ export const addToCart = (id: string, quantity: number): {
     }
 };
 
-
+// from local storage
 export const getCartItems = async (): Promise<TItemInCart[] | []> => {
     const cartDataString = localStorage.getItem('cart') as string;
 

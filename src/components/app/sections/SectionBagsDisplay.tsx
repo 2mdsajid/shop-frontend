@@ -9,7 +9,7 @@ type Props = {
 const SectionBagsDisplay = (props: Props) => {
     const { data } = props
     return (
-        <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:griid-cols-6 gap-4">
             {data.map((d, i) => (
                 <BasicBagInfoCard key={i} {...d} />
             ))}

@@ -1,20 +1,10 @@
-import { DUMMY_BAGS_DATA } from '@/lib/data'
-import React from 'react'
-import BasicBagInfoCard from '../../reusable/BasicBagInfoCard'
+import { getLatestBags } from '@/lib/actions'
 import SectionTitle from '../../reusable/SectionTitle'
 import SectionBagsDisplay from './SectionBagsDisplay'
 
 type Props = {}
 
-const getLatestBags = async () => {
-    try {
-        const response = await fetch(`${process.env.BACKEND}/product/get-latest`)
-        const responseReturn = await response.json()
-        return responseReturn
-    } catch (error) {
-        return { data: null, message: 'No Bags To DIsplay' }
-    }
-}
+
 
 const LatestBagsSection = async (props: Props) => {
     // const LatestBags = DUMMY_BAGS_DATA.filter(b => b.isNew)
@@ -31,7 +21,7 @@ const LatestBagsSection = async (props: Props) => {
                     data={data}
                 /> :
                 <div>
-                    <p>{message}</p>
+                    <p>No Bags To Display!</p>
                 </div>}
         </section>
     )
