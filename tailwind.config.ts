@@ -20,8 +20,10 @@ const config = {
     extend: {
       zIndex: {
         '100': '100',
+        '150': '150',
         '200': '200',
         '300': '300',
+        '350': '350',
       },
       colors: {
         primary: "#fafafa",

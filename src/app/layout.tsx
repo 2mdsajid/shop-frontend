@@ -4,6 +4,7 @@ import "./globals.css";
 import { NextAuthProvider } from "@/lib/auth/SessionProvider";
 import Header from "@/components/app/header/Header";
 import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/app/sections/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,11 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <NextAuthProvider>
-        <Header />
         <body className={inter.className}>
-          <main className="bg-primary text-black absolute top-14">
+          <Header />
+          <main className="bg-primary text-black pt-14 pb-10">
             {children}
           </main>
+          <Footer />
         </body>
         <Toaster />
       </NextAuthProvider>

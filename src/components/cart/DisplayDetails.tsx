@@ -21,6 +21,7 @@ const DisplayDetails = (props: Props) => {
                     alt={name}
                     className="h-20 w-20 flex-none rounded-md bg-gray-200"
                     height="80"
+                    loading="lazy"
                     src={imageUrl}
                     style={{
                         aspectRatio: "80/80",

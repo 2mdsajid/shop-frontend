@@ -9,7 +9,7 @@ type Props = {}
 
 const Header = (props: Props) => {
     return (
-        <div className='w-screen bg-primary h-14 fixed border-b border-black top-0 left-0 z-200 flex items-center justify-between px-4 md:px-10 lg:px-20 xl:px-32 '>
+        <header className='w-screen bg-primary h-14 fixed border-b border-black top-0 left-0 z-200 flex items-center justify-between px-4 md:px-10 lg:px-20 xl:px-32 '>
             <HeaderSidebar />
             <div className='flex items-center gap-10'>
                 <h1>
@@ -30,7 +30,7 @@ const Header = (props: Props) => {
                 <div><a href='/cart'><FaCartArrowDown /></a></div>
                 <div><a href='/profile'><CgProfile /></a></div>
             </div>
-        </div>
+        </header>
     )
 }
 

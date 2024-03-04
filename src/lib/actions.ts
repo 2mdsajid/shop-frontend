@@ -70,7 +70,7 @@ export const addToCart = (id: string, quantity: number): {
         }
 
         localStorage.setItem('cart', JSON.stringify(parsedCart));
-        return { state: 'success', message: 'Successfully added to cart' };
+        return { state: 'success', message: `Successfully added ${quantity} items to cart` };
     } catch (error) {
         console.error('Error adding to cart:', error);
         return { state: 'destructive', message: 'Unable to add to cart. Please try again later.' };
@@ -108,11 +108,34 @@ export const getCartItems = async (): Promise<TItemInCart[] | []> => {
 
 
 // get singel cart item from local storage
-export const getSingleCartItem = (id: string) => {
-    const cartDataString = localStorage.getItem('cart');
-    if (!cartDataString) return 0;
-    const cartData: Record<string, number> = JSON.parse(cartDataString);
-    return cartData[id] || 0;
+export const getSingleCartItem = (id: string): {
+    id: string,
+    quantity: number,
+} => {
+    const cartDataString = localStorage.getItem('cart') as string;
+
+    if (!cartDataString || cartDataString === 'undefined') {
+        return {
+            id: id,
+            quantity: 1,
+        }
+    }
+
+    const cartItems: TItemInCartLocalStorage[] = JSON.parse(cartDataString)
+    if (cartItems.length === 0) {
+        return {
+            id: id,
+            quantity: 1,
+        }
+    }
+
+    const cartItem = cartItems.find(item => item.id === id)
+    return {
+        id: id,
+        quantity: cartItem?.quantity || 1,
+    }
+
+
 };
 
 

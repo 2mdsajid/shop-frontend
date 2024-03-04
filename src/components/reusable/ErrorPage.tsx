@@ -9,6 +9,7 @@ const ErrorPage = (props: Props) => {
     if (message) {
         return <p>{message}</p>
     }
+    
     return (
         <div>Some Error Occured</div>
     )

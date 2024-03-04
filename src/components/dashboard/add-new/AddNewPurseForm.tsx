@@ -100,7 +100,7 @@ const AddNewPurseForm = (props: Props) => {
 
   useEffect(() => {
     if (props?.data) {
-      const {
+      let {
         id,
         name,
         price,
@@ -113,6 +113,14 @@ const AddNewPurseForm = (props: Props) => {
         images,
         hasDiscount
       } = props?.data
+      console.log("🚀 ~ useEffect ~ props?.data:", props?.data)
+
+      if (!hasDiscount) {
+        hasDiscount = {
+          state: false,
+          value: 0
+        }
+      }
 
       setProductId(id)
       setName(name)
@@ -121,8 +129,8 @@ const AddNewPurseForm = (props: Props) => {
       setCategory(category)
       setItemsLeft(itemsLeft)
       setIsFreeDelivery(isFreeDelivery)
-      setHasDiscount(hasDiscount.state)
-      setDiscount(hasDiscount.value)
+      setHasDiscount(hasDiscount.state || false)
+      setDiscount(hasDiscount.value || 0)
       setDescription(description)
       setImageUrl(imageUrl)
       setImages(images)

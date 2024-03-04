@@ -6,7 +6,7 @@ type Props = {
 
 const CheckoutItemCounts = (props: Props) => {
     return (
-        <div>count : {props.count}</div>
+        <p>{props.count}</p>
     )
 }
 

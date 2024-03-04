@@ -8,21 +8,21 @@ type Props = {
     status: string;
 };
 
-const OrderInfo: React.FC<Props> = (props: Props) => {
+const OrderInfo = (props: Props) => {
     const { id, createdAt, status } = props;
     const formattedDate = new Date(createdAt).toLocaleString();
     return (
-        <div className="border p-4 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-2">Order Information</h2>
-            <div>
-                <strong>ID:</strong> {id}
+        <div className=" flex justify-between px-2">
+            {/* <h2 className="text-xl font-bold mb-2">Order Information</h2> */}
+            <div className='text-sm text-gray-700'>
+                {id.replace(/-/g, '')}
             </div>
-            <div>
-                <strong>Created At:</strong> {formattedDate}
+            <div className='text-sm text-gray-700'>
+                {formattedDate}
             </div>
-            <div>
+            {/* <div>
                 <strong>Status:</strong> {status}
-            </div>
+            </div> */}
         </div>
     );
 };

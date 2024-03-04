@@ -14,7 +14,7 @@ const DisplayImages = (props: Props) => {
     const { name, image, images, isFreeDelivery } = props
     const [currentImage, setCurrentImage] = useState(image)
     return (
-        <div className="w-full relative">
+        <div className="w-full rounded-md p-2 shadow relative">
             <img
                 alt={name}
                 className="mb-4"
@@ -46,7 +46,7 @@ const DisplayImages = (props: Props) => {
                         )
                     })}
                 </div>}
-            {isFreeDelivery && <div className="absolute top-0 left-0 bg-[#00FF00] text-white text-center py-1 px-2 rounded-md">Free Delivery</div>}
+            {isFreeDelivery && <div className="absolute top-2 left-2 bg-green-500 text-white text-center py-1 px-2 rounded-md">Free Delivery</div>}
         </div>
     )
 }

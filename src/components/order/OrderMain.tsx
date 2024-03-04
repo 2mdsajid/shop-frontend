@@ -21,7 +21,7 @@ export default function OrderMain(props: Props) {
   }
 
   return (
-    <div className="max-w-2xl mx-auto my-8 p-6 bg-white shadow-lg rounded-lg space-y-3">
+    <div className="w-[95%] mx-auto my-8 p-6 bg-white shadow-lg rounded-lg space-y-5">
       <OrderHeaderDetails />
       <OrderInfo {...orderInfo} />
       <OrderProductsTable products={products} />
@@ -30,7 +30,7 @@ export default function OrderMain(props: Props) {
         // change this delivery amount according to database not hardcoded
         deliveryAmount={120}
       />
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-5 mb-4 p-4">
         <OrderDeliveryAddress />
         <OrderBillingAddress />
       </div>

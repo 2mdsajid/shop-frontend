@@ -110,18 +110,19 @@ export default function CartDisplayMain() {
     useEffect(() => {
         const fetchCartItems = async () => {
             const items = await getCartItems()
+            console.log("🚀 ~ fetchCartItems ~ items:", items)
             if (items.length === 0) return setNoItemsFound(true)
             setCartItems(items)
         }
         fetchCartItems()
-    }, [])
+    }, [cartItems])
 
 
     return (
         <div className="w-full">
             <div>
                 {/* this is fro no item found because it renders something as empty array before rendering the array items in use effect*/}
-                {noItemsFound && <NoCartItemFound />}
+                {(noItemsFound || cartItems.length === 0) && <NoCartItemFound />}
             </div>
             <div>
                 {cartItems.length > 0 &&

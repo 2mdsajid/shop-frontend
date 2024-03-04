@@ -17,8 +17,8 @@ const QuantityCounter = (props: Props) => {
     const router = useRouter()
     const { itemsLeft, productId } = props
 
-    const quantityInLocalStorage = getSingleCartItem(productId)
-    const [quantity, setQuantity] = useState(quantityInLocalStorage)
+    const { id, quantity: quantityInLocalStorage } = getSingleCartItem(productId)
+    const [quantity, setQuantity] = useState(quantityInLocalStorage || 1)
 
     const changeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.currentTarget.value;
@@ -82,7 +82,16 @@ const QuantityCounter = (props: Props) => {
             </div>
             <div className="flex space-x-4">
                 <Button className="bg-blue-500 text-white py-2 px-6" onClick={proceedToCheckout}>Buy Now</Button>
-                <Button className="bg-orange-500 text-white py-2 px-6" onClick={() => addToCart(productId, quantity)}>Add to Cart</Button>
+                <Button className="bg-orange-500 text-white py-2 px-6" onClick={(e) => {
+                    e.preventDefault();
+                    const { state, message } = addToCart(productId, quantity);
+                    return toast({
+                        title: state,
+                        variant: state,
+                        description: message,
+                        duration: 2500,
+                    })
+                }}>Add to Cart</Button>
             </div>
         </div>
     )

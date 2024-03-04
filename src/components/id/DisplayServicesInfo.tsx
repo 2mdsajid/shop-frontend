@@ -48,13 +48,15 @@ function ShieldIcon(props: any) {
 const DisplayServicesInfo = (props: Props) => {
     return (
         <div className='space-y-2'>
+            <h2 className="text-xl font-semibold">Service</h2>
             <div className="text-sm">
                 <RefreshCwIcon className="text-gray-600 w-5 h-5 inline mr-1" />
-                14 days free & easy return Change of mind is not applicable
+                10 days free return. Change of mind is not applicable
             </div>
+            
             <div className="text-sm">
                 <ShieldIcon className="text-gray-600 w-5 h-5 inline mr-1" />
-                1 Month Seller Warranty
+                1 Month Warranty
             </div>
         </div>
     )
