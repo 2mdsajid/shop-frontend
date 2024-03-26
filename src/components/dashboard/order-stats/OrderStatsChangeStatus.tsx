@@ -54,7 +54,7 @@ const OrderStatsChangeStatus = (props: Props) => {
                     <SelectContent>
                         {orderStatus.map((status) => {
                             return (
-                                <SelectItem value={status}>{status}</SelectItem>
+                                <SelectItem key={status} value={status}>{status}</SelectItem>
                             )
                         })}
                     </SelectContent>

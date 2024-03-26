@@ -21,6 +21,7 @@ const SIDEBAR_MENU_LIST: TDropownContent = [
     icon: <FiUser />,
   },
   {
+    
     label: "Purse Stats",
     link: '/dashboard/purse-stats',
     desc: "Description for Option 1",
@@ -85,7 +86,8 @@ const DashboardSidebar = (props: Props) => {
           {isSidebarShown ? <AiOutlineArrowLeft /> : <FiMenu />}
         </button>
       </div>
-    </div>)
+    </div>
+    )
 }
 
 export default DashboardSidebar
