@@ -152,7 +152,7 @@ const AddNewPurseForm = (props: Props) => {
             })}
           </div>}
       </div>
-      <form onSubmit={handleSubmit} className="w-full mx-auto p-8 rounded-md shadow-md">
+      <form onSubmit={handleSubmit} className="w-full mx-auto p-8">
         <div className="mb-4">
           <label className="block text-gray-700">Name:</label>
           <Input type="text" name="name" value={name} onChange={(e) => setName(e.currentTarget.value)} className="form-input mt-1 w-full" />

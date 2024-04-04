@@ -8,7 +8,6 @@ export default function SignIn() {
   if (status === "loading") return <div>Loading...</div>;
 
   if (session) {
-    console.log("🚀 ~ SignIn ~ session:", session)
     return (
       <>
         Signed in as {session.user?.email} <br />

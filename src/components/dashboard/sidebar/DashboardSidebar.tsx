@@ -52,7 +52,7 @@ const DashboardSidebar = (props: Props) => {
 
 
   return (
-    <div className={`${isSidebarShown ? 'w-[100vw] h-screen md:w-fit  ' : 'w-max  md:w-fit'} z-50 flex fixed`}>
+    <div className={`${isSidebarShown ? 'w-[100vw] h-screen md:w-fit  ' : 'w-max  md:w-fit'} z-200 flex fixed top-14`}>
       <div className={`transform ${isSidebarShown ? 'w-[50vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] h-screen border border-black' : 'w-[0vw] md:w-[30vw] lg:w-[25vw] xl:w-[20vw] md:h-screen '} pt-3 bg-primary dark:bg-dark-primary md:border-r md:dark:border-r-white md:border-r-gray-800`}>
         <div className={`transform ${isSidebarShown ? 'block' : 'hidden md:block'} pl-3 `}>
           <div className='pl-0 md:pl-4 flex flex-col space-y-2 rounded-md mt-1 '>

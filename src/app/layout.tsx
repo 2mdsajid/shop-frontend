@@ -23,7 +23,7 @@ export default function RootLayout({
       <NextAuthProvider>
         <body className={inter.className}>
           <Header />
-          <main className="bg-primary text-black pt-14 pb-10">
+          <main className="bg-primary text-black pb-10 pt-14 flex flex-col">
             {children}
           </main>
           <Footer />
@@ -33,3 +33,4 @@ export default function RootLayout({
     </html>
   );
 }
+
