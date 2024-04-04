@@ -118,3 +118,4 @@ model CartItem {
 
   @@unique([productId, userId])
 }
+
