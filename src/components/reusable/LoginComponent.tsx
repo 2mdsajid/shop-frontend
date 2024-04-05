@@ -6,14 +6,18 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 
-
-const LoginComponent = () => {
-    const pathname = usePathname()    
+type Props = {
+    searchParams?: {
+        t: string
+    }
+}
+const LoginComponent = (props: Props) => {
+    const pathname = usePathname()
     const [isloginclicked, setIsLoginclicked] = useState(false)
 
     const handleGoogleLogin = async () => {
         setIsLoginclicked(true)
-        await signIn('google', { callbackUrl: pathname || '/' })
+        await signIn('google', { callbackUrl: '/' })
     };
 
     return (

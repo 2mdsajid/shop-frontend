@@ -110,7 +110,6 @@ export default function CartDisplayMain() {
     useEffect(() => {
         const fetchCartItems = async () => {
             const items = await getCartItems()
-            console.log("🚀 ~ fetchCartItems ~ items:", items)
             if (items.length === 0) return setNoItemsFound(true)
             setCartItems(items)
         }

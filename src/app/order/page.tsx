@@ -1,9 +1,8 @@
+import CartLoginDialog from '@/components/cart/CartLoginDialog'
 import OrderMain from '@/components/order/OrderMain'
 import { confirmAndGetPlaceOrderItems } from '@/lib/actions'
 import { authOptions } from '@/lib/auth/auth'
 import { getServerSession } from 'next-auth'
-import { redirect } from 'next/navigation'
-import React from 'react'
 
 type Props = {
     searchParams: {
@@ -13,7 +12,13 @@ type Props = {
 
 const page = async (props: Props) => {
     const session = await getServerSession(authOptions)
-    if (!session) redirect('/')
+    if (!session) {
+        return <div className='min-h-[93vh] flex items-center justify-center max-w-xl mx-auto'>
+            <CartLoginDialog 
+            props={props}
+            buttonLabel='CLick Here To Login' />
+        </div>
+    }
 
     const userId = session.user?.id as string
     const { t } = props.searchParams

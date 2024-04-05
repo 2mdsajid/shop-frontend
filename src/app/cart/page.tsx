@@ -8,7 +8,6 @@ import CartDisplayMain from '@/components/cart/CartDisplayMain';
 type Props = {}
 
 const page = (props: Props) => {
-  console.log("🚀 ~ page ~ props:", props)
   return (
     <div className='w-screen'>
       <Suspense fallback={<>Loading Cart Items...</>}>

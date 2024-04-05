@@ -15,7 +15,7 @@ const BasicBagInfoCard = (props: TBasicBagInfo) => {
 
     return (
 
-        <Link href={`/${id}`} className='w-full relative h-max p-1 shadow-md rounded-md hover:scale-105 transform transition-transform duration-300'>
+        <Link href={`/${id}`} className='w-full relative h-max p-1 border rounded-md hover:scale-105 transform transition-transform duration-300'>
             <div className='w-full flex flex-col items-start gap-1'>
                 {isNew && isNew && (
                     <div className="absolute top-1 left-1 p-1 rounded text-xs border bg-green-600 text-white">
@@ -37,7 +37,7 @@ const BasicBagInfoCard = (props: TBasicBagInfo) => {
                     </p>
                     <div className='flex justify-between items-center gap-2  w-full'>
                         <div className='flex flex-wrap gap-1 my-1'>
-                            <div className="p-2 rounded-full shadow-md hover:scale-110 transform transition-transform duration-100 ">
+                            <div className="p-2 rounded-full border hover:scale-110 transform transition-transform duration-100 ">
                                 <IoCartOutline
                                     size={20}
                                     onClick={(e) => {
@@ -53,7 +53,7 @@ const BasicBagInfoCard = (props: TBasicBagInfo) => {
                                 />
                             </div>
                             <Link
-                                className='p-2 rounded-full shadow-md hover:scale-110 transform transition-transform duration-100 '
+                                className='p-2 rounded-full border hover:scale-110 transform transition-transform duration-100 '
                                 href={`/${id}`}>
                                 <IoIosExpand
                                     size={20}

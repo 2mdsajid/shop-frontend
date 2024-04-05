@@ -32,7 +32,7 @@ const BuyNowButton = (props: Props) => {
     }
 
     return (
-        <button onClick={proceedToCheckout} className=' px-2 py-2 rounded-md shadow flex items-center gap-1 hover:scale-110 transform transition-transform duration-100'>
+        <button onClick={proceedToCheckout} className=' px-2 py-2 rounded-md border flex items-center gap-1 hover:scale-110 transform transition-transform duration-100'>
             <IoBagHandleOutline
                 size={20}
             />
