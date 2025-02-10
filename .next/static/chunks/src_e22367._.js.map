@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sections": [
+    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["/turbopack/[project]/src/components/auth/SignIn.tsx"],"sourcesContent":["\"use client\";\nimport { useSession, signIn, signOut } from \"next-auth/react\";\nimport { Button } from \"../ui/button\";\n\nexport default function SignIn() {\n  const { data: session, status } = useSession();\n  \n  if (status === \"loading\") return <div>Loading...</div>;\n\n  if (session) {\n    return (\n      <>\n        Signed in as {session.user?.email} <br />\n        <Button variant={\"destructive\"} onClick={() => signOut({\n          callbackUrl:'/'\n        })}>Sign out</Button>\n      </>\n    );\n  }\n  return (\n    <>\n      Not signed in <br />\n      <Button onClick={() => signIn()}>Sign in</Button>\n    </>\n  );\n}"],"names":[],"mappings":";;;;;;;;;AAAA;;;AAIe,SAAS;;IACtB,MAAM,EAAE,MAAM,OAAO,EAAE,MAAM,EAAE,GAAG;IAElC,IAAI,WAAW,WAAW,qBAAO,wLAAC;kBAAI;;;;;;IAEtC,IAAI,SAAS;QACX,qBACE;;gBAAE;gBACc,QAAQ,IAAI,EAAE;gBAAM;8BAAC,wLAAC;;;;;8BACpC;oBAAQ,SAAS;oBAAe,SAAS,IAAM,6JAAQ;4BACrD,aAAY;wBACd;8BAAI;;;;;;;;IAGV;IACA,qBACE;;YAAE;0BACc,wLAAC;;;;;0BACf;gBAAQ,SAAS,IAAM;0BAAU;;;;;;;;AAGvC;GArBwB;;;;;KAAA"}},
+    {"offset": {"line": 79, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
